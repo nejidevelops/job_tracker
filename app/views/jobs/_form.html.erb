@@ -1,0 +1,21 @@
+<%= form_with model: @job do |form| %>
+    <p>
+        <%= form.label :title %><br>
+        <%= form.text_field :title %>
+    </p>
+    <p>
+        <%= form.label :company %><br>
+        <%= form.text_field :company %>
+    </p>
+    <p>
+        <%= form.label :status %><br>
+        <%= form.select :status, Job.statuses.keys, selected: :applied %>
+    </p>
+    <p>
+        <%= form.label :notes %><br>
+        <%= form.text_area :notes %>
+    </p>
+    <p>
+        <%= form.submit %>
+    </p>
+<% end %>
