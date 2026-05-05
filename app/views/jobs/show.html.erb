@@ -4,4 +4,6 @@
 <p><strong>Status:</strong> <%= @job.status %></p>
 <p><strong>Notes:</strong> <%= @job.notes %></p>
 
+<%= button_to "Delete Job", job_path(job), method: :delete, confirm: "Are you sure?" %>
+
 <%= link_to "Back to Jobs", jobs_path %>
