@@ -9,7 +9,7 @@
     </p>
     <p>
         <%= form.label :status %><br>
-        <%= form.select :status, Job.statuses.keys, selected: :applied %>
+        <%= form.select :status, Job.statuses.keys %>
     </p>
     <p>
         <%= form.label :notes %><br>
@@ -18,4 +18,15 @@
     <p>
         <%= form.submit %>
     </p>
+
+    <% if @job.errors.any? %>
+    <div>
+        <h3><%= pluralize(@job.errors.count, "error") %> prevented saving:</h3>
+        <ul>
+        <% @job.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+        <% end %>
+        </ul>
+    </div>
+    <% end %>
 <% end %>
