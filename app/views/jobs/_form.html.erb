@@ -1,32 +1,57 @@
-<%= form_with model: @job do |form| %>
-    <p>
-        <%= form.label :title %><br>
-        <%= form.text_field :title %>
-    </p>
-    <p>
-        <%= form.label :company %><br>
-        <%= form.text_field :company %>
-    </p>
-    <p>
-        <%= form.label :status %><br>
-        <%= form.select :status, Job.statuses.keys %>
-    </p>
-    <p>
-        <%= form.label :notes %><br>
-        <%= form.text_area :notes %>
-    </p>
-    <p>
-        <%= form.submit %>
-    </p>
+<div class="max-w-2xl mx-auto py-12 px-4">
+  <div class="mb-8">
+    <h1 class="text-3xl font-bold text-slate-900">Add New Job</h1>
+    <p class="text-slate-500 mt-2">Enter the details of your job application below.</p>
+  </div>
 
+  <%= form_with model: @job, class: "space-y-6" do |form| %>
+    <%# Error Messages %>
     <% if @job.errors.any? %>
-    <div>
-        <h3><%= pluralize(@job.errors.count, "error") %> prevented saving:</h3>
-        <ul>
-        <% @job.errors.full_messages.each do |message| %>
+      <div class="bg-red-50 border-l-4 border-red-400 p-4 mb-6 rounded-r-lg">
+        <h3 class="text-sm font-bold text-red-800">
+          <%= pluralize(@job.errors.count, "error") %> prohibited this job from being saved:
+        </h3>
+        <ul class="mt-2 text-sm text-red-700 list-disc list-inside">
+          <% @job.errors.full_messages.each do |message| %>
             <li><%= message %></li>
-        <% end %>
+          <% end %>
         </ul>
-    </div>
+      </div>
     <% end %>
-<% end %>
+
+    <%# Job Title %>
+    <div>
+      <%= form.label :title, class: "block text-sm font-semibold text-slate-700 mb-1" %>
+      <%= form.text_field :title, placeholder: "e.g. Senior Developer",
+                          class: "block w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition shadow-sm" %>
+    </div>
+
+    <%# Company %>
+    <div>
+      <%= form.label :company, class: "block text-sm font-semibold text-slate-700 mb-1" %>
+      <%= form.text_field :company, placeholder: "e.g. Google",
+                          class: "block w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition shadow-sm" %>
+    </div>
+
+    <%# Status %>
+    <div>
+      <%= form.label :status, class: "block text-sm font-semibold text-slate-700 mb-1" %>
+      <%= form.select :status, Job.statuses.keys, {},
+                      class: "block w-full px-4 py-3 rounded-lg border border-slate-300 bg-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition shadow-sm" %>
+    </div>
+
+    <%# Notes %>
+    <div>
+      <%= form.label :notes, class: "block text-sm font-semibold text-slate-700 mb-1" %>
+      <%= form.text_area :notes, rows: 4, placeholder: "Key details about the interview process...",
+                         class: "block w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition shadow-sm" %>
+    </div>
+
+    <%# Submit Action %>
+    <div class="pt-4 flex items-center gap-4">
+      <%= form.submit "Save Job Application",
+                      class: "cursor-pointer bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg transition duration-200 shadow-md transform active:scale-95" %>
+      <%= link_to "Cancel", jobs_path, class: "text-sm font-medium text-slate-500 hover:text-slate-800" %>
+    </div>
+  <% end %>
+</div>
