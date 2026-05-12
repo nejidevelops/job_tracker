@@ -1,12 +1,20 @@
-<h1>All Jobs</h1>
+<div class="max-w-5xl ">
+  <h1 class="text-4xl text-blue-500">All Jobs</h1>
 
-<% @jobs.each do |job| %>
-    <h2><%= link_to job.title, job_path(job) %></h2>
-    <p><%= job.company %></p>
-    <p><%= job.status %></p>
-    <p><%= job.notes %></p>
+  <section class="grid grid-cols-3 gap-4 mt-4">
+    <% @jobs.each do |job| %>
+      <div class="bg-white p-4 rounded shadow">
+        <h2 class="text-2xl font-medium text-gray-800"><%= link_to job.title, job_path(job) %></h2>
+        <p class="text-lg bg-gray-50 text-blue-300 w-fit p-2"><%= job.company %></p>
+        <p><%= job.status %></p>
+        <p><%= job.notes %></p>
 
-    <%= button_to "Delete Job",  job_path(job), method: :delete, confirm: "Are you sure?"  %>
-<% end %>
+        <%= button_to "Delete Job",  job_path(job), method: :delete, confirm: "Are you sure?"  %>
+      </div>
+    <% end %>
+  </section>
 
-<%= link_to "Add New Job", new_job_path %>
+
+  <%= link_to "Add New Job", new_job_path %>
+</div>
+
