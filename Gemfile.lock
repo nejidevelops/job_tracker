@@ -342,6 +342,10 @@ GEM
     turbo-rails (2.0.23)
       actionpack (>= 7.1.0)
       railties (>= 7.1.0)
+    turbo-toastify (1.0.1)
+      rails (>= 7.0, < 9.0)
+      stimulus-rails (>= 1.0, < 3.0)
+      turbo-rails (>= 1.0, < 3.0)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
     tzinfo-data (1.2026.2)
@@ -393,6 +397,7 @@ DEPENDENCIES
   tailwindcss-rails (~> 4.4)
   thruster
   turbo-rails
+  turbo-toastify
   tzinfo-data
   web-console
 
