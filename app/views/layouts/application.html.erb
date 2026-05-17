@@ -28,6 +28,13 @@
   <body>
     <main class="mx-auto px-5">
       <%= yield %>
+      <% flash.each do |type, message| %>
+        <div
+          data-controller="toast"
+          data-message="<%= message %>"
+          data-type="<%= type %>">
+        </div>
+      <% end %>
     </main>
   </body>
 </html>
