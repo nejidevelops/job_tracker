@@ -9,3 +9,6 @@
  * Consider organizing styles into separate files for maintainability.
  */
 @import url("https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
